@@ -1,0 +1,102 @@
+{
+  "produits": [
+    {
+      "id": "e30c6792-486e-48f3-97f1-4ed2e11a72ad",
+      "nom": "djdjdjjd",
+      "prix": "440040",
+      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "stock": "0000303",
+      "categorie": "babab",
+      "description": "ddldllldddldllldddldllldddldllldddldllldddldllld"
+    },
+    {
+      "id": "d3c249cf-37a5-4fc8-8ff3-2ff85e571d29",
+      "nom": "ppppp",
+      "prix": "1000",
+      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "stock": "10000",
+      "categorie": "categorie",
+      "description": "vdddddddaddddaddddaddddaddddadddda"
+    },
+    {
+      "id": "ea87ce04-e9ac-4493-bc49-9252331207fe",
+      "nom": "lllll",
+      "prix": "33000",
+      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "stock": "30000",
+      "categorie": "dddd",
+      "description": "100000"
+    },
+    {
+      "id": "d0fceb0c-80ef-4c36-aaa2-2436d57e2e31",
+      "nom": "lllll",
+      "prix": "2",
+      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "stock": "22000",
+      "categorie": "4000",
+      "description": "5555005"
+    },
+    {
+      "id": "25b786f2-6881-408e-a254-38360bbe0109",
+      "nom": "lllddll",
+      "prix": "1000",
+      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "stock": "1000",
+      "categorie": "ldlld",
+      "description": "lddldlldld"
+    },
+    {
+      "id": "92daf41b-9f30-4698-b13d-3cbfd731db48",
+      "nom": "llddldl",
+      "prix": "3333",
+      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "stock": "000",
+      "categorie": "dldld",
+      "description": "ldlddl"
+    },
+    {
+      "id": "0d68f910-eda2-4fef-a5b1-3454771bc38f",
+      "nom": "robe",
+      "prix": "1000",
+      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "stock": "50",
+      "categorie": "robe",
+      "description": "lddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldll"
+    },
+    {
+      "id": "9a71e0b8-43f6-49bf-8d41-d9f35dac1445",
+      "nom": "baba der",
+      "prix": "30000",
+      "stock": "1000",
+      "categorie": "robe mariage",
+      "description": "mariage",
+      "image": "https://images.pexels.com/photos/5729152/pexels-photo-5729152.jpeg"
+    }
+  ],
+  "commandes": [
+    {
+      "id": "c3b2645d-9e7a-4b3b-b44b-c2fe4e43cf82",
+      "produitId": "92daf41b-9f30-4698-b13d-3cbfd731db48",
+      "nom": "llddldl",
+      "prix": "3333",
+      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "quantite": 1
+    },
+    {
+      "id": "4858feb3-2588-4bcb-b7cf-e215e44bfa3c",
+      "produitId": "d3c249cf-37a5-4fc8-8ff3-2ff85e571d29",
+      "nom": "ppppp",
+      "prix": "1000",
+      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "quantite": 2
+    },
+    {
+      "id": "4858feb3-2588-4bcb-b7cf-e215e44bfa3c",
+      "produitId": "d3c249cf-37a5-4fc8-8ff3-2ff85e571d29",
+      "nom": "ppppp",
+      "prix": "1000",
+      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "quantite": 1
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body class="bg-gray-50">
+    <div class="max-w-6xl rounded-2xl min-h-screen mx-auto w-full flex shadow-lg border border-gray-200 bg-white text-black">
+      <div class="w-60 p-4 border-r border-gray-200 flex flex-col gap-7 items-center">
+        <div>
+          <h2 class="font-bold mb-4 mt-4 text-3xl">Ebuy Admin</h2>
+          <hr />
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <ul class="flex flex-col items-center">
+            <li class="p-2 rounded text-xl">
+              <button id="btnProduits" class="btn btn-dash btn-success w-40">Produits</button>
+            </li>
+            <li class="p-2 rounded text-xl">
+              <button id="btnCommandes" class="btn btn-dash btn-success w-40">Commandes</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="contProduits" class="flex-1 p-8 flex flex-col bg-admin-bg">
+        <h1 class="text-3xl font-bold mb-6">Gestion projet</h1>
+        <div class="w-full mx-auto max-w-4xl p-3 rounded-md border-t items-center flex flex-col gap-3 border-gray-100 shadow-md bg-white mt-4">
+          <h1>Ajouter un nouveau produit</h1>
+          <form id="formProduit" class="flex flex-col items-center">
+            <div class="flex gap-4 mt-3">
+              <input type="text" id="nom" placeholder="nom du produit" class="input input-bordered w-70" />
+              <input type="url" id="imgLink" placeholder="Copiez l'adresse de l'image ici..." required class="input input-bordered w-full" />
+            </div>
+            <div class="flex gap-4 mt-4">
+              <input type="number" id="prix" class="input input-bordered w-40" required placeholder="Prix (FCFA)" />
+              <input type="number" id="stock" class="input input-bordered w-50" required placeholder="nombre de Stock" />
+              <input type="text" id="categorie" placeholder="nom du catégorie" required class="input input-bordered w-50" />
+            </div>
+            <div class="mt-4">
+              <textarea id="description" class="textarea textarea-bordered w-130 h-30" required placeholder="description du produit"></textarea>
+            </div>
+            <button class="btn btn-success mt-4 w-full max-w-xs" type="submit">Ajouter le produit</button>
+          </form>
+        </div>
+        <div class="w-full mx-auto max-w-4xl p-3 rounded-md border-t border-gray-100 shadow-md bg-white mt-4">
+          <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Prix</th>
+                  <th>Stock</th>
+                  <th>Nom du produit</th>
+                  <th>catégorie</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="lesProduits"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="contCommandes" class="hidden bg-admin-bg flex-1">les Commandes</div>
+    </div>
+    <script src="/js/admin.js"></script>
+  </body>
+</html>

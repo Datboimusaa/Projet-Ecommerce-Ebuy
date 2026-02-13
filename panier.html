@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panier</title>
+    <link href="./css/output.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+  </head>
+  <body class="bg-gray-100 flex flex-col items-center">
+    <main class="w-full min-h-screen flex gap-4 flex-col items-center">
+      <div class="max-w-6xl mx-auto min-h-screen bg-white rounded-3xl shadow-sm border border-slate-100 p-6 md:p-10">
+        <div class="flex justify-between items-center mb-8">
+          <h1 class="text-3xl font-bold text-slate-800">Ebuy</h1>
+          <button class="btn btn-ghost bg-slate-50 rounded-full px-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+            </svg>
+            Mon Panier <span id="nombreArticle" class="badge badge-sm ml-2">5</span>
+          </button>
+        </div>
+
+        <a href="produits.html" class="text-slate-400 flex items-center gap-2 text-sm hover:text-indigo-600 transition-colors mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Continuer vos achats
+        </a>
+
+        <h2 class="text-3xl font-extrabold text-slate-900 mb-2">Votre Panier</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <div class="lg:col-span-2 space-y-4 mt-2" id="lesCommandes">
+            <div class="flex items-center justify-between bg-white border border-slate-100 rounded-2xl p-3 shadow-sm">
+              <div class="flex items-center gap-4">
+                <img
+                  src="data:image/jpeg;base64,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"
+                  class="w-20 h-20 rounded-2xl object-cover"
+                  alt="Produit"
+                />
+                <div>
+                  <h3 class="font-bold text-lg text-slate-800">Robe</h3>
+                  <p class="text-slate-400 font-medium">0000 FCFA</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-6">
+                <span class="font-bold text-slate-800 text-lg">000 FCFA</span>
+                <div class="join bg-slate-100 rounded-lg">
+                  <button data-id="${produit.id}" class="btnMoins btn btn-ghost btn-xs join-item">-</button>
+                  <button class="btn btn-ghost btn-xs join-item pointer-events-none">3</button>
+                  <button data-id="${produit.id}" class="btnPlus btn btn-ghost btn-xs join-item">+</button>
+                </div>
+                <button data-id="${produit.id}" class="btnDeleteCommande btn btn-ghost text-red-400 hover:text-red-600 hover:bg-red-50 btn-sm">
+                  Supprimer
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div class="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm">
+              <div class="flex justify-between items-center mb-8">
+                <span class="text-indigo-600 font-medium cursor-pointer">Code de réduction</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
+                  />
+                </svg>
+              </div>
+
+              <div class="flex justify-between items-center mb-2 text-xl">
+                <span class="font-bold text-slate-800">Sous-total :</span>
+                <span class="font-black text-slate-900" id="totalPanier">119,96 €</span>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed mb-8">Les frais de livraison seront calculés lors du paiement.</p>
+
+              <button class="btn btn-primary w-full bg-emerald-500 hover:bg-emerald-600 border-none text-white rounded-xl h-14 text-lg">Commander</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/produits.js"></script>
+  </body>
+</html>

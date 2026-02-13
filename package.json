@@ -1,9 +1,12 @@
 {
   "dependencies": {
     "@tailwindcss/cli": "^4.1.18",
+    "daisyui": "^5.5.18",
+    "json-server": "^1.0.0-beta.5",
     "tailwindcss": "^4.1.18"
   },
   "scripts": {
-  "dev": "tailwindcss -i ./css/style.css -o ./css/output.css --watch"
-}
+    "dev": "tailwindcss -i ./css/style.css -o ./css/output.css --watch",
+    "server": "npx json-server --watch db.json --port 3001"
+  }
 }
