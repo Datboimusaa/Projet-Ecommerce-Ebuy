@@ -73,7 +73,7 @@ function startAutoSlide() {
             index = 0;
         }
         slide(index);
-    }, 10000)
+    }, 7000)
 }
 startAutoSlide();
 
