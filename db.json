@@ -1,101 +1,136 @@
 {
   "produits": [
     {
-      "id": "e30c6792-486e-48f3-97f1-4ed2e11a72ad",
-      "nom": "djdjdjjd",
-      "prix": "440040",
-      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
-      "stock": "0000303",
-      "categorie": "babab",
+      "id": "1",
+      "nom": "Sneakers",
+      "prix": "30000",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
+      "stock": "300",
+      "categorie": "homme",
       "description": "ddldllldddldllldddldllldddldllldddldllldddldllld"
     },
     {
-      "id": "d3c249cf-37a5-4fc8-8ff3-2ff85e571d29",
-      "nom": "ppppp",
-      "prix": "1000",
-      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
-      "stock": "10000",
-      "categorie": "categorie",
-      "description": "vdddddddaddddaddddaddddaddddadddda"
-    },
-    {
-      "id": "ea87ce04-e9ac-4493-bc49-9252331207fe",
-      "nom": "lllll",
-      "prix": "33000",
-      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
-      "stock": "30000",
-      "categorie": "dddd",
-      "description": "100000"
-    },
-    {
-      "id": "d0fceb0c-80ef-4c36-aaa2-2436d57e2e31",
-      "nom": "lllll",
-      "prix": "2",
-      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
-      "stock": "22000",
-      "categorie": "4000",
-      "description": "5555005"
-    },
-    {
-      "id": "25b786f2-6881-408e-a254-38360bbe0109",
-      "nom": "lllddll",
-      "prix": "1000",
-      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
-      "stock": "1000",
-      "categorie": "ldlld",
-      "description": "lddldlldld"
-    },
-    {
-      "id": "92daf41b-9f30-4698-b13d-3cbfd731db48",
-      "nom": "llddldl",
-      "prix": "3333",
-      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
-      "stock": "000",
-      "categorie": "dldld",
-      "description": "ldlddl"
-    },
-    {
-      "id": "0d68f910-eda2-4fef-a5b1-3454771bc38f",
-      "nom": "robe",
-      "prix": "1000",
-      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
-      "stock": "50",
-      "categorie": "robe",
-      "description": "lddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldlllddldldldll"
-    },
-    {
-      "id": "9a71e0b8-43f6-49bf-8d41-d9f35dac1445",
-      "nom": "baba der",
+      "id": "2",
+      "nom": "Sneakers",
       "prix": "30000",
-      "stock": "1000",
-      "categorie": "robe mariage",
-      "description": "mariage",
-      "image": "https://images.pexels.com/photos/5729152/pexels-photo-5729152.jpeg"
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
+      "stock": "300",
+      "categorie": "homme",
+      "description": "ddldllldddldllldddldllldddldllldddldllldddldllld"
+    },
+    {
+      "id": "3",
+      "nom": "Sneakers",
+      "prix": "25000",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
+      "stock": "300",
+      "categorie": "homme",
+      "description": "ddldllldddldllldddldllldddldllldddldllldddldllld"
+    },
+    {
+      "id": "4",
+      "nom": "Sneakers",
+      "prix": "1500",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
+      "stock": "300",
+      "categorie": "homme",
+      "description": "ddldllldddldllldddldllldddldllldddldllldddldllld"
+    },
+    {
+      "id": "5",
+      "nom": "Sneakers",
+      "prix": "440040",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
+      "stock": "10000",
+      "categorie": "homme",
+      "description": "ddldllldddldllldddldllldddldllldddldllldddldllld"
+    },
+    {
+      "id": "6",
+      "nom": "Sneakers",
+      "prix": "200",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
+      "stock": "300",
+      "categorie": "homme",
+      "description": "ddldllldddldllldddldllldddldllldddldllldddldllld"
+    },
+    {
+      "id": "7",
+      "nom": "Chemise Homme",
+      "prix": "4000",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
+      "stock": "300",
+      "categorie": "homme",
+      "description": "ddldllldddldllldddldllldddldllldddldllldddldllld"
+    },
+    {
+      "id": "8",
+      "nom": "Sneakers",
+      "prix": "3000",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
+      "stock": "300",
+      "categorie": "homme",
+      "description": "ddldllldddldllldddldllldddldllldddldllldddldllld"
+    },
+    {
+      "id": "e88b37b3-54db-4ddb-ad4a-7dba0ddb7d86",
+      "nom": "homme",
+      "prix": "3000",
+      "stock": "200",
+      "categorie": "homme",
+      "description": "hommmmme",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg"
+    },
+    {
+      "id": "26c2e4c2-9ba4-49e1-96f0-4ee74231fb03",
+      "nom": "Sneackers",
+      "prix": "300",
+      "stock": "100",
+      "categorie": "homme",
+      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg"
+    },
+    {
+      "id": "7ad2d411-aedc-4abf-954a-e2d5b7b1b3df",
+      "nom": "Moussa ",
+      "prix": "100",
+      "stock": "9",
+      "categorie": "Homme",
+      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg"
     }
   ],
   "commandes": [
     {
-      "id": "c3b2645d-9e7a-4b3b-b44b-c2fe4e43cf82",
-      "produitId": "92daf41b-9f30-4698-b13d-3cbfd731db48",
-      "nom": "llddldl",
-      "prix": "3333",
-      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "id": "5decbabd-43de-4bf1-bf62-54f74a9d94eb",
+      "produitId": "7ad2d411-aedc-4abf-954a-e2d5b7b1b3df",
+      "nom": "Moussa ",
+      "prix": "100",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
       "quantite": 1
     },
     {
-      "id": "4858feb3-2588-4bcb-b7cf-e215e44bfa3c",
-      "produitId": "d3c249cf-37a5-4fc8-8ff3-2ff85e571d29",
-      "nom": "ppppp",
-      "prix": "1000",
-      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
-      "quantite": 2
+      "id": "704de510-df0d-497c-afb8-1ab6034eb311",
+      "produitId": "e88b37b3-54db-4ddb-ad4a-7dba0ddb7d86",
+      "nom": "homme",
+      "prix": "3000",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
+      "quantite": 1
     },
     {
-      "id": "4858feb3-2588-4bcb-b7cf-e215e44bfa3c",
-      "produitId": "d3c249cf-37a5-4fc8-8ff3-2ff85e571d29",
-      "nom": "ppppp",
-      "prix": "1000",
-      "image": "https://images.pexels.com/photos/342257/pexels-photo-342257.jpeg",
+      "id": "a861cb6a-ac28-4ebe-914f-984da5cd166b",
+      "produitId": "8",
+      "nom": "Sneakers",
+      "prix": "3000",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
+      "quantite": 1
+    },
+    {
+      "id": "5dc0de4f-4d84-439e-9268-12d47084d097",
+      "produitId": "26c2e4c2-9ba4-49e1-96f0-4ee74231fb03",
+      "nom": "Sneackers",
+      "prix": "300",
+      "image": "https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg",
       "quantite": 1
     }
   ]

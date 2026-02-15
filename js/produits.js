@@ -2,49 +2,37 @@ const lesProduits = document.getElementById('lesProduits');
 
 const getProduits = async () => {
   try {
-    const res = await axios.get('http://localhost:3000/produits');
+    const res = await axios.get('http://localhost:3001/produits');
     const produits = res.data.reverse();
 
     let pros = '';
     produits.forEach((produit) => {
       pros += `
-     <div idPro=${produit.id} class="cursor-pointer block w-67 rounded-lg pb-3 shadow-sm shadow-gray-500 hover:scale-102 duration-300">
-          <img alt="" src="${produit.image}" class="h-56 w-full rounded-md object-cover" />
+        <div class="w-75 bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden p-2">
+          <div class="relative bg-primary-purple rounded-2xl mb-4 p-4 flex justify-center items-center h-56">
+            <i class="bi bi-heart text-2xl text-gray-400 absolute top-4 right-4 cursor-pointer"></i>
+            <div class="w-full h-full flex items-center justify-center">
+              <img src="${produit.image}" alt="Sneakers" class="max-h-55 w-60 object-contain" />
+            </div>
+          </div>
 
-          <div class="mt-2 pr-3">
-            <div class="flex flex-between">
-              <div>
-                <h1 class="pl-3 text-gray-700 font-mono text-sm">${produit.prix} FCFA</h1>
-                <p class="pl-3 font-medium text-[15px]">${produit.nom}</p>
+          <div class="px-2">
+            <div class="flex justify-between items-center mb-3">
+              <h1 class="text-xl font-medium text-text-color">${produit.nom}</h1>
+              <div class="flex items-center text-yellow-500">
+                <i class="bi bi-star-fill text-lg"></i>
+                <span class="ml-1 text-sm font-semibold text-text-color">4.7</span>
               </div>
-              <button idPro="${produit.id}" type="button" class="btnPro btn btn-neutral btn-dash px-3 h-8">Ajouter</button>
             </div>
 
-            <div class="mt-6 pl-3 flex items-center gap-8 text-xs">
-              <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-                <svg class="size-4 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
-                </svg>
+            <p class="text-2xl font-bold text-text-color mb-5">${produit.prix}</p>
 
-                <div class="mt-1.5 sm:mt-0">
-                  <p class="text-gray-500">État</p>
-
-                  <p class="font-medium">Neuf / Vérifié</p>
-                </div>
-              </div>
-
-              <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-                <svg class="size-4 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                </svg>
-
-                <div class="mt-1.5 sm:mt-0">
-                  <p class="text-gray-500">Livraison</p>
-
-                  <p class="font-medium">24h - 48h</p>
-                </div>
-              </div>
-            </div>
+            <button idPro="${produit.id}"
+              class="btnPro w-full cursor-pointer bg-primary text-white font-semibold py-3 px-3 rounded-xl flex items-center justify-center shadow-md hover:bg-amber-700 transition duration-150"
+            >
+              <i class="bi bi-cart3 text-xl mr-3"></i>
+              Ajouter au Panier
+            </button>
           </div>
         </div>
       `;
@@ -52,11 +40,11 @@ const getProduits = async () => {
     lesProduits.innerHTML = pros;
 
     const clickPro = document.querySelectorAll('.btnPro');
-    clickPro.forEach((produit) => {
-      produit.addEventListener('click', async (e) => {
+    clickPro.forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const id = produit.getAttribute('idPro');
+        const id = btn.getAttribute('idPro');
         ajouterAuPanier(id);
       });
     });
@@ -68,12 +56,12 @@ getProduits();
 
 const ajouterAuPanier = async (id) => {
   try {
-    const com = await axios.get('http://localhost:3000/commandes');
+    const com = await axios.get('http://localhost:3001/commandes');
     const comds = com.data;
     const existe = comds.some((p) => p.produitId === id);
     if (existe) return;
 
-    const res = await axios.get(`http://localhost:3000/produits/${id}`);
+    const res = await axios.get(`http://localhost:3001/produits/${id}`);
     const produit = res.data;
 
     const commande = {
@@ -84,7 +72,8 @@ const ajouterAuPanier = async (id) => {
       image: produit.image,
       quantite: 1,
     };
-    await axios.post('http://localhost:3000/commandes', commande);
+    await axios.post('http://localhost:3001/commandes', commande);
+    getCommandes();
     alert('produit ajouté');
   } catch (error) {
     console.error('Erreur pour ajout dans le panier', error);
@@ -93,13 +82,22 @@ const ajouterAuPanier = async (id) => {
 
 const getCommandes = async () => {
   try {
-    const res = await axios.get('http://localhost:3000/commandes');
+    const res = await axios.get('http://localhost:3001/commandes');
     const data = res.data.reverse();
 
     const lesCommandes = document.getElementById('lesCommandes');
     const nombreArticle = document.getElementById('nombreArticle');
+    const totalPanier = document.getElementById('totalPanier');
 
-    nombreArticle.textContent = data.length;
+    if (nombreArticle) nombreArticle.textContent = data.length;
+
+    let total = 0;
+    data.forEach((p) => {
+      total += Number(p.prix) * p.quantite;
+    });
+    if (totalPanier) {
+      totalPanier.textContent = total;
+    }
 
     let content = '';
     data.forEach((produit) => {
@@ -124,7 +122,10 @@ const getCommandes = async () => {
         </div>
       `;
     });
-    lesCommandes.innerHTML = content;
+    if (lesCommandes) {
+      lesCommandes.innerHTML = content;
+    }
+
     activerPanier();
   } catch (error) {
     console.log('Erreur lors de la récupération des commandes:', error);
@@ -135,8 +136,8 @@ const activerPanier = () => {
   document.querySelectorAll('.btnPlus').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const id = btn.getAttribute('data-id');
-      const res = await axios.get(`http://localhost:3000/commandes/${id}`);
-      await axios.patch(`http://localhost:3000/commandes/${id}`, {
+      const res = await axios.get(`http://localhost:3001/commandes/${id}`);
+      await axios.patch(`http://localhost:3001/commandes/${id}`, {
         quantite: res.data.quantite + 1,
       });
       getCommandes();
@@ -146,9 +147,9 @@ const activerPanier = () => {
   document.querySelectorAll('.btnMoins').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const id = btn.getAttribute('data-id');
-      const res = await axios.get(`http://localhost:3000/commandes/${id}`);
+      const res = await axios.get(`http://localhost:3001/commandes/${id}`);
       if (res.data.quantite > 1) {
-        await axios.patch(`http://localhost:3000/commandes/${id}`, {
+        await axios.patch(`http://localhost:3001/commandes/${id}`, {
           quantite: res.data.quantite - 1,
         });
         getCommandes();
@@ -160,7 +161,7 @@ const activerPanier = () => {
     btn.addEventListener('click', async () => {
       const id = btn.getAttribute('data-id');
       if (confirm('Voulez-vous supprimé cet article ?')) {
-        await axios.delete(`http://localhost:3000/commandes/${id}`);
+        await axios.delete(`http://localhost:3001/commandes/${id}`);
         getCommandes();
       }
     });

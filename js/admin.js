@@ -1,4 +1,5 @@
 const formProduit = document.getElementById('formProduit');
+console.log('dddd', formProduit);
 
 formProduit.addEventListener('submit', async (e) => {
   try {
@@ -12,7 +13,8 @@ formProduit.addEventListener('submit', async (e) => {
       description: document.getElementById('description').value,
       image: document.getElementById('imgLink').value,
     };
-    const reponse = await axios.post('http://localhost:3000/produits', nouveauProduit);
+    const reponse = await axios.post('http://localhost:3001/produits', nouveauProduit);
+    alert('produit ajouté');
   } catch (error) {
     console.log(error);
     alert('Une erreur est survenue de notre part');
@@ -21,7 +23,7 @@ formProduit.addEventListener('submit', async (e) => {
 
 const getProduits = async () => {
   try {
-    const res = await axios.get('http://localhost:3000/produits');
+    const res = await axios.get('http://localhost:3001/produits');
     const produits = res.data;
     const lesProduits = document.getElementById('lesProduits');
 
@@ -57,7 +59,7 @@ getProduits();
 
 const deleteProduits = async (id) => {
   try {
-    await axios.delete(`http://localhost:3000/produits/${id}`);
+    await axios.delete(`http://localhost:3001/produits/${id}`);
   } catch (error) {
     console.error('Erreur d suppression :', error);
   }
