@@ -1,9 +1,17 @@
 const lesProduits = document.getElementById('lesProduits');
 
-const getProduits = async () => {
+const fetchLocal = (key) => {
+  const data = localStorage.getItem(key);
+  return data ? JSON.parse(data) : [];
+};
+
+const saveLocal = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data));
+};
+
+const getProduits = () => {
   try {
-    const res = await axios.get('http://localhost:3001/produits');
-    const produits = res.data.reverse();
+    const produits = fetchLocal('produits').reverse();
 
     let pros = '';
     produits.forEach((produit) => {
@@ -25,7 +33,7 @@ const getProduits = async () => {
               </div>
             </div>
 
-            <p class="text-2xl font-bold text-text-color mb-5">${produit.prix}</p>
+            <p class="text-2xl font-bold text-text-color mb-5">${produit.prix} FCFA</p>
 
             <button idPro="${produit.id}"
               class="btnPro w-full cursor-pointer bg-primary text-white font-semibold py-3 px-3 rounded-xl flex items-center justify-center shadow-md hover:bg-amber-700 transition duration-150"
@@ -41,7 +49,7 @@ const getProduits = async () => {
 
     const clickPro = document.querySelectorAll('.btnPro');
     clickPro.forEach((btn) => {
-      btn.addEventListener('click', async (e) => {
+      btn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
         const id = btn.getAttribute('idPro');
@@ -54,15 +62,20 @@ const getProduits = async () => {
 };
 getProduits();
 
-const ajouterAuPanier = async (id) => {
+const ajouterAuPanier = (id) => {
   try {
-    const com = await axios.get('http://localhost:3001/commandes');
-    const comds = com.data;
-    const existe = comds.some((p) => p.produitId === id);
-    if (existe) return;
+    let commandes = fetchLocal('commandes');
 
-    const res = await axios.get(`http://localhost:3001/produits/${id}`);
-    const produit = res.data;
+    const existe = commandes.some((p) => p.produitId === id);
+    if (existe) {
+      alert('Ce produit est déjà dans le panier');
+      return;
+    }
+
+    const produits = fetchLocal('produits');
+    const produit = produits.find((p) => p.id === id);
+
+    if (!produit) return;
 
     const commande = {
       id: crypto.randomUUID(),
@@ -72,18 +85,20 @@ const ajouterAuPanier = async (id) => {
       image: produit.image,
       quantite: 1,
     };
-    await axios.post('http://localhost:3001/commandes', commande);
+
+    commandes.push(commande);
+    saveLocal('commandes', commandes);
+    nombreSurPanier();
     getCommandes();
-    alert('produit ajouté');
+    alert('Produit ajouté au panier');
   } catch (error) {
     console.error('Erreur pour ajout dans le panier', error);
   }
 };
 
-const getCommandes = async () => {
+const getCommandes = () => {
   try {
-    const res = await axios.get('http://localhost:3001/commandes');
-    const data = res.data.reverse();
+    const data = fetchLocal('commandes').reverse();
 
     const lesCommandes = document.getElementById('lesCommandes');
     const nombreArticle = document.getElementById('nombreArticle');
@@ -95,6 +110,7 @@ const getCommandes = async () => {
     data.forEach((p) => {
       total += Number(p.prix) * p.quantite;
     });
+
     if (totalPanier) {
       totalPanier.textContent = total;
     }
@@ -111,7 +127,7 @@ const getCommandes = async () => {
               </div>
             </div>
             <div class="flex items-center gap-6">
-              <span class="font-bold text-slate-800 text-lg">${produit.prix} FCFA</span>
+              <span class="font-bold text-slate-800 text-lg">${produit.prix * produit.quantite} FCFA</span>
               <div class="join bg-slate-100 rounded-lg">
                 <button data-id="${produit.id}" class="btnMoins btn btn-ghost btn-xs join-item">-</button>
                 <button class="btn btn-ghost btn-xs join-item pointer-events-none">${produit.quantite}</button>
@@ -122,6 +138,7 @@ const getCommandes = async () => {
         </div>
       `;
     });
+
     if (lesCommandes) {
       lesCommandes.innerHTML = content;
     }
@@ -134,37 +151,49 @@ const getCommandes = async () => {
 
 const activerPanier = () => {
   document.querySelectorAll('.btnPlus').forEach((btn) => {
-    btn.addEventListener('click', async () => {
+    btn.addEventListener('click', () => {
       const id = btn.getAttribute('data-id');
-      const res = await axios.get(`http://localhost:3001/commandes/${id}`);
-      await axios.patch(`http://localhost:3001/commandes/${id}`, {
-        quantite: res.data.quantite + 1,
-      });
-      getCommandes();
+      let commandes = fetchLocal('commandes');
+      const index = commandes.findIndex((c) => c.id === id);
+      if (index !== -1) {
+        commandes[index].quantite += 1;
+        saveLocal('commandes', commandes);
+        getCommandes();
+      }
     });
   });
 
   document.querySelectorAll('.btnMoins').forEach((btn) => {
-    btn.addEventListener('click', async () => {
+    btn.addEventListener('click', () => {
       const id = btn.getAttribute('data-id');
-      const res = await axios.get(`http://localhost:3001/commandes/${id}`);
-      if (res.data.quantite > 1) {
-        await axios.patch(`http://localhost:3001/commandes/${id}`, {
-          quantite: res.data.quantite - 1,
-        });
+      let commandes = fetchLocal('commandes');
+      const index = commandes.findIndex((c) => c.id === id);
+      if (index !== -1 && commandes[index].quantite > 1) {
+        commandes[index].quantite -= 1;
+        saveLocal('commandes', commandes);
         getCommandes();
       }
     });
   });
 
   document.querySelectorAll('.btnDeleteCommande').forEach((btn) => {
-    btn.addEventListener('click', async () => {
+    btn.addEventListener('click', () => {
       const id = btn.getAttribute('data-id');
-      if (confirm('Voulez-vous supprimé cet article ?')) {
-        await axios.delete(`http://localhost:3001/commandes/${id}`);
+      if (confirm('Voulez-vous supprimer cet article du panier ?')) {
+        let commandes = fetchLocal('commandes');
+        commandes = commandes.filter((c) => c.id !== id);
+        saveLocal('commandes', commandes);
         getCommandes();
       }
     });
   });
 };
+
 getCommandes();
+
+const nombreSurPanier = () => {
+  const data = fetchLocal('commandes');
+  const totalPan = document.getElementById('totalPan');
+  totalPan.textContent = data.length;
+};
+nombreSurPanier();
